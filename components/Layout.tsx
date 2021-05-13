@@ -12,13 +12,13 @@ const Layout: React.FC<TITLE> = ({ children, title = 'Nextjs' }) => {
         <title>{title}</title>
       </Head>
       <header>
-        <nav className="bg-gray-300 w-screen">
-          <div className="fex items-center pl-8 h-14">
+        <nav className="bg-gray-800 w-screen">
+          <div className="flex items-center pl-8 h-14">
             <div className="flex space-x-4">
               <Link href="/">
                 <a
                   data-testid="home-nav"
-                  className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
+                  className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
                 >
                   Home
                 </a>
@@ -26,7 +26,7 @@ const Layout: React.FC<TITLE> = ({ children, title = 'Nextjs' }) => {
               <Link href="/blog-page">
                 <a
                   data-testid="blog-nav"
-                  className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
+                  className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
                 >
                   Blog
                 </a>
@@ -34,9 +34,25 @@ const Layout: React.FC<TITLE> = ({ children, title = 'Nextjs' }) => {
               <Link href="/comment-page">
                 <a
                   data-testid="comment-nav"
-                  className="test-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
+                  className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
                 >
                   Comment
+                </a>
+              </Link>
+              <Link href="/context-page">
+                <a
+                  data-testid="context-nav"
+                  className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
+                >
+                  Context
+                </a>
+              </Link>
+              <Link href="/task-page">
+                <a
+                  data-testid="task-nav"
+                  className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded"
+                >
+                  Todos
                 </a>
               </Link>
             </div>
