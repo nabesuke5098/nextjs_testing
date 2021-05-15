@@ -13,7 +13,6 @@ export const getAllTasksData = async () => {
     new URL('https://jsonplaceholder.typicode.com/todos/?_limit=10')
   )
   const tasks = await res.json()
-
   return tasks
 }
 
@@ -36,7 +35,5 @@ export const getPostData = async (id: string) => {
     new URL(`https://jsonplaceholder.typicode.com/posts/${id}`)
   )
   const post = await res.json()
-  return {
-    post,
-  }
+  return post
 }

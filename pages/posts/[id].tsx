@@ -16,11 +16,11 @@ const PostDetail: React.FC<POST> = ({ id, title, body }) => {
       <Link href="/blog-page">
         <div className="flex cursor-pointer mt-12">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 mr-3"
+            className="w-6 h-6 mr-3"
             fill="none"
-            viewBox="0 0 24 24"
             stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               strokeLinecap="round"
