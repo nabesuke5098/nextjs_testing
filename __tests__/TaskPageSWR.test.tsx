@@ -30,3 +30,42 @@ const server = setupServer(
     }
   )
 )
+beforeAll(() => {
+  server.listen()
+})
+afterEach(() => {
+  server.resetHandlers()
+  cleanup()
+})
+afterAll(() => {
+  server.close()
+})
+
+describe(`Todos page / useSWR`, () => {
+  let staticProps: TASK[]
+  staticProps = [
+    {
+      userId: 3,
+      id: 3,
+      title: 'Static task C',
+      completed: true,
+    },
+    {
+      userId: 4,
+      id: 4,
+      title: 'Static task D',
+      completed: false,
+    },
+  ]
+  it('Should render CSF data after ore-rendered data', async () => {
+    render(
+      <SWRConfig value={{ dedupingInterval: 0 }}>
+        <TaskPage staticTasks={staticProps} />
+      </SWRConfig>
+    )
+    expect(await screen.findByText('Static task C')).toBeInTheDocument()
+    expect(screen.getByText('Static task D')).toBeInTheDocument()
+    expect(await screen.findByText('Task A')).toBeInTheDocument()
+    expect(screen.getByText('Task B')).toBeInTheDocument()
+  })
+})
