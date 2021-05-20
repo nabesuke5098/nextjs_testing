@@ -65,7 +65,25 @@ describe(`Todos page / useSWR`, () => {
     )
     expect(await screen.findByText('Static task C')).toBeInTheDocument()
     expect(screen.getByText('Static task D')).toBeInTheDocument()
+    // screen.debug()
     expect(await screen.findByText('Task A')).toBeInTheDocument()
     expect(screen.getByText('Task B')).toBeInTheDocument()
+    // screen.debug()
+  })
+  it('Should render Error text when fetch failed', async () => {
+    server.use(
+      rest.get(
+        'https://jsonplaceholder.typicode.com/todos/?_limit=10',
+        (req, res, ctx) => {
+          return res(ctx.status(400))
+        }
+      )
+    )
+    render(
+      <SWRConfig value={{ dedupingInterval: 0 }}>
+        <TaskPage staticTasks={staticProps} />
+      </SWRConfig>
+    )
+    expect(await screen.findByText('Error!')).toBeInTheDocument()
   })
 })
